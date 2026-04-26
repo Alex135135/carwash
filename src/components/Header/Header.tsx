@@ -15,9 +15,8 @@ export function Header() {
         }
 
         checkWidth()
-        window.addEventListener('resize', checkWidth)
 
-        return () => window.removeEventListener('resize', checkWidth)
+        window.addEventListener("resize", checkWidth)
     }, [])
 
     return (
@@ -33,4 +32,36 @@ export function Header() {
                 </div>
                 <span className={s.logolink__span}>AquaShine</span>
             </Link>
-      )}
+
+            {isMobile ? (
+                <>
+                    <button
+                        className={`${s.menuButton} ${menuIsOpen ? s.open : ''}`}
+                        onClick={() => setMenuIsOpen(!menuIsOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div className={`${s.mobileMenu} ${menuIsOpen ? s.open : ''}`}>
+                        <nav className={s.mobileNav}>
+                            <ul className={s.nav__ul}>
+                                <li className={s.ul__li}><Link href={'/booking'} className={s.ul__link} onClick={() => setMenuIsOpen(false)}>Запись</Link></li>
+                                <li className={s.ul__li}><Link href={'/services'} className={s.ul__link} onClick={() => setMenuIsOpen(false)}>Услуги</Link></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </>
+            ) : (
+                <nav className={s.header__nav}>
+                    <ul className={s.nav__ul}>
+                        <li className={s.ul__li}><Link href={'/booking'} className={s.ul__link}>Запись</Link></li>
+                        <li className={s.ul__li}><Link href={'/services'} className={s.ul__link}>Услуги</Link></li>
+                    </ul>
+                </nav>
+            )}
+        </header>
+    )
+}
