@@ -3,6 +3,7 @@ import Link from "next/link"
 import s from "./Header.module.scss"
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import Logo from "../../../public/Logo.png"
 
 export function Header() {
     const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -25,12 +26,12 @@ export function Header() {
                 <div className={s.logoContainer}>
                     <Image
                         src="/Logo.png"
-                        alt="AquaShine Logo"
+                        alt="НашаМойка Logo"
                         fill
                         className={s.logo}
                     />
                 </div>
-                <span className={s.logolink__span}>AquaShine</span>
+                <span className={s.logolink__span}>НашаМойка</span>
             </Link>
 
             {isMobile ? (
